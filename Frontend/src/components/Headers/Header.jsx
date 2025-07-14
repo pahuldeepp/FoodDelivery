@@ -10,7 +10,7 @@ const Header = () => {
           Choose from a diverse menu and enjoy delicious meals delivered right to your door.
         </p>
         <button>
-            View Menu
+          View Menu
         </button>
       </div>
     </div>
