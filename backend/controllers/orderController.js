@@ -7,6 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 
+// Place Order
 const placeOrder = async (req, res) => {
   const frontend_url = "http://localhost:5173";
   try {
@@ -31,6 +32,7 @@ const placeOrder = async (req, res) => {
       quantity: item.quantity,
     }));
 
+    // Add delivery charges
     line_items.push({
       price_data: {
         currency: "inr",
@@ -56,6 +58,7 @@ const placeOrder = async (req, res) => {
   }
 };
 
+// Verify Payment
 const verifyOrder = async (req, res) => {
   try {
     const { orderId } = req.body;
@@ -75,4 +78,28 @@ const verifyOrder = async (req, res) => {
   }
 };
 
-export { placeOrder, verifyOrder };
+// Get All Orders of a User
+const userOrders = async (req, res) => {
+  try {
+    const orders = await orderModel.find({ userId: req.body.userId });
+    res.json({ success: true, data: orders });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+//listing order 
+
+const listOrders= async(req, res)=>{
+try{
+  const orders= await orderModel.find({});
+  res.json({success: true, data: orders})
+}catch(error){
+  console.log(error);
+  res.json({success:false, message:"error"})
+  
+}
+}
+
+export { placeOrder, verifyOrder, userOrders , listOrders};

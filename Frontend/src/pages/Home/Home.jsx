@@ -1,21 +1,22 @@
-import React from 'react'
-import "./Home.css"
-import Header from '../../components/Headers/Header'
+import React, { useState } from 'react';
+import "./Home.css";
+import Header from '../../components/Headers/Header';
 import ExploreMenu from '../../components/ExploreMenu/ExploreMenu';
-import { useState } from 'react';
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
 import AppDownload from '../../components/AppDownload/AppDownload';
+
 const Home = () => {
-    const [category, setCategory]=useState("All");
+  const [category, setCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState(""); // 👈 Add this line
 
   return (
     <div>
-      <Header/>
-      <ExploreMenu category={category} setCategory={setCategory}/>
-      <FoodDisplay category={category}/>
-      <AppDownload/>
+      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> {/* 👈 Pass props */}
+      <ExploreMenu category={category} setCategory={setCategory} />
+      <FoodDisplay category={category} searchQuery={searchQuery} /> {/* 👈 Pass search */}
+      <AppDownload />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
