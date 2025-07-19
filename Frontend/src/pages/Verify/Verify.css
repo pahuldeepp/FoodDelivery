@@ -1,0 +1,30 @@
+.verify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.verify h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #2e7d32; /* green for success */
+}
+
+.verify p {
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+.verify strong {
+  color: #000;
+}
+
+.verify-error h2 {
+  color: #c62828; /* red for error */
+}

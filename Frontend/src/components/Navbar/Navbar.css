@@ -10,16 +10,20 @@
   .navbar .logo {
     width: 140px;
   }
+
   .navbar-menu {
     gap: 20px;
     font-size: 17px;
   }
+
   .navbar-right {
-    gap: 30px; /* ✅ added missing semicolon */
+    gap: 30px;
   }
+
   .navbar-right img {
     width: 22px;
   }
+
   .navbar-right button {
     padding: 8px 25px;
   }
@@ -30,16 +34,20 @@
   .navbar .logo {
     width: 120px;
   }
+
   .navbar-menu {
     gap: 15px;
     font-size: 16px;
   }
+
   .navbar-right {
     gap: 20px;
   }
+
   .navbar-right img {
     width: 20px;
   }
+
   .navbar-right button {
     padding: 7px 20px;
     font-size: 15px;
@@ -53,4 +61,61 @@
   }
 }
 
+/* Profile Dropdown */
+.nav-profile-dropdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
 
+.navbar-profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar-profile img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.nav-profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 150px;
+  z-index: 100;
+}
+
+.nav-profile-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nav-profile-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-profile-dropdown hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.navbar-profile:hover .nav-profile-dropdown {
+  display: flex;
+}
