@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext'; // ✅ Import context
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const { getTotalCartAmount } = useContext(StoreContext); // ✅ Use context
 
   return (
     <div className='navbar'>
-      <img src={assets.logo} alt='logo' className='logo' />
+      <Link to='/'><img src={assets.logo} alt='logo' className='logo' /></Link>
+      
       <ul className="navbar-menu">
         <li>
           <Link to='/' onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>home</Link>
@@ -23,11 +26,15 @@ const Navbar = ({ setShowLogin }) => {
           <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>contact us</a>
         </li>
       </ul>
+
       <div className='navbar-right'>
         <img src={assets.search_icon} alt='search' />
         <div className='navbar-search-icon'>
-          <img src={assets.basket_icon} alt='cart' />
-          <div className='dot'></div>
+          <Link to='/cart'>
+            <img src={assets.basket_icon} alt='cart' />
+          </Link>
+          {/* Show red dot only if cart is not empty */}
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         <button onClick={() => setShowLogin(true)}>sign in</button>
       </div>
